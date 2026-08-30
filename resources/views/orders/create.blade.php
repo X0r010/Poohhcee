@@ -13,21 +13,21 @@
             <div class="min-w-0">
                 <label class="block text-xs font-medium text-zinc-700 mb-1.5">Date</label>
                 <input type="date" name="order_date" value="{{ date('Y-m-d') }}" required
-                       class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 px-3 py-2 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900 appearance-none">
+                       class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900 appearance-none">
             </div>
             <div class="min-w-0">
                 <label class="block text-xs font-medium text-zinc-700 mb-1.5">Customer Handle</label>
                 <input type="text" name="customer_handle" placeholder="@username" required
-                       class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 px-3 py-2 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900">
+                       class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900">
             </div>
             <div class="min-w-0">
                 <label class="block text-xs font-medium text-zinc-700 mb-1.5">Phone</label>
                 <input type="text" name="customer_phone" placeholder="0xx xxx xxx"
-                       class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 px-3 py-2 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900">
+                       class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900">
             </div>
             <div class="min-w-0">
                 <label class="block text-xs font-medium text-zinc-700 mb-1.5">Source</label>
-                <select name="source" class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 py-2 pl-3 pr-8 text-xs focus:outline-none focus:border-zinc-900 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23374151%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:14px_14px] bg-[right_0.75rem_center] bg-no-repeat">
+                <select name="source" class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 bg-white py-1.5 pl-3 pr-8 text-xs focus:outline-none focus:border-zinc-900 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23374151%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:14px_14px] bg-[right_0.75rem_center] bg-no-repeat">
                     @foreach (['TikTok', 'IG', 'FB', 'Website', 'Other'] as $s)
                         <option value="{{ $s }}">{{ $s }}</option>
                     @endforeach
@@ -36,7 +36,7 @@
             <div class="sm:col-span-4 min-w-0">
                 <label class="block text-xs font-medium text-zinc-700 mb-1.5">Delivery Location</label>
                 <input type="text" name="customer_location" placeholder="Address / landmark"
-                       class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 px-3 py-2 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900">
+                       class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900">
             </div>
         </div>
     </div>
@@ -48,7 +48,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
             <div class="min-w-0">
                 <label class="block text-xs font-medium text-zinc-700 mb-1.5">Collection</label>
-                <select id="collection-select" required class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 py-2 pl-3 pr-8 text-xs focus:outline-none focus:border-zinc-900 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23374151%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:14px_14px] bg-[right_0.75rem_center] bg-no-repeat">
+                <select id="collection-select" required class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 bg-white py-1.5 pl-3 pr-8 text-xs focus:outline-none focus:border-zinc-900 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23374151%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:14px_14px] bg-[right_0.75rem_center] bg-no-repeat">
                     <option value="">Select collection...</option>
                     @foreach ($collections as $c)
                         <option value="{{ $c->id }}">{{ $c->name }}</option>
@@ -58,13 +58,13 @@
             <div class="min-w-0">
                 <label class="block text-xs font-medium text-zinc-700 mb-1.5">Design</label>
                 <select name="design_id" id="design-select" required disabled
-                        class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 py-2 pl-3 pr-8 text-xs focus:outline-none focus:border-zinc-900 disabled:bg-zinc-50 disabled:text-zinc-400 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23374151%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:14px_14px] bg-[right_0.75rem_center] bg-no-repeat">
+                        class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 bg-white py-1.5 pl-3 pr-8 text-xs focus:outline-none focus:border-zinc-900 disabled:bg-zinc-50 disabled:text-zinc-400 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23374151%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:14px_14px] bg-[right_0.75rem_center] bg-no-repeat">
                     <option value="">Select collection first...</option>
                 </select>
             </div>
             <div class="min-w-0">
                 <label class="block text-xs font-medium text-zinc-700 mb-1.5">Shirt Type</label>
-                <select name="shirt_type_id" id="shirt-type-select" class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 py-2 pl-3 pr-8 text-xs focus:outline-none focus:border-zinc-900 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23374151%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:14px_14px] bg-[right_0.75rem_center] bg-no-repeat">
+                <select name="shirt_type_id" id="shirt-type-select" class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 bg-white py-1.5 pl-3 pr-8 text-xs focus:outline-none focus:border-zinc-900 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23374151%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:14px_14px] bg-[right_0.75rem_center] bg-no-repeat">
                     <option value="">Select type...</option>
                     @foreach ($shirtTypes as $t)
                         <option value="{{ $t->id }}" data-name="{{ $t->name }}">{{ $t->name }}</option>
@@ -73,7 +73,7 @@
             </div>
             <div class="min-w-0">
                 <label class="block text-xs font-medium text-zinc-700 mb-1.5">Size</label>
-                <select name="size" id="size-select" required class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 py-2 pl-3 pr-8 text-xs focus:outline-none focus:border-zinc-900 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23374151%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:14px_14px] bg-[right_0.75rem_center] bg-no-repeat">
+                <select name="size" id="size-select" required class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 bg-white py-1.5 pl-3 pr-8 text-xs focus:outline-none focus:border-zinc-900 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23374151%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:14px_14px] bg-[right_0.75rem_center] bg-no-repeat">
                     @foreach (['XS', 'S', 'M', 'L', 'XL', '2XL', '3XL'] as $s)
                         <option value="{{ $s }}" {{ $s === 'M' ? 'selected' : '' }}>{{ $s }}</option>
                     @endforeach
@@ -81,7 +81,7 @@
             </div>
             <div class="min-w-0">
                 <label class="block text-xs font-medium text-zinc-700 mb-1.5">Color</label>
-                <select name="color" id="color-input" required class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 py-2 pl-3 pr-8 text-xs focus:outline-none focus:border-zinc-900 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23374151%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:14px_14px] bg-[right_0.75rem_center] bg-no-repeat">
+                <select name="color" id="color-input" required class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 bg-white py-1.5 pl-3 pr-8 text-xs focus:outline-none focus:border-zinc-900 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23374151%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:14px_14px] bg-[right_0.75rem_center] bg-no-repeat">
                     <option value="">Select color...</option>
                     @foreach (($shirtColors ?? $colors ?? []) as $color)
                         <option value="{{ $color->name }}" {{ old('color') == $color->name ? 'selected' : '' }}>
@@ -110,7 +110,7 @@
                 Shirt Stock Action
             </label>
             <select id="stock-use-select" 
-                    class="w-full max-w-full min-w-0 rounded-lg border border-zinc-300 bg-white py-2 pl-3 pr-8 text-xs font-medium text-zinc-900 shadow-xs focus:border-zinc-900 focus:outline-none focus:ring-1 focus:ring-zinc-900 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23374151%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:14px_14px] bg-[right_0.75rem_center] bg-no-repeat">
+                    class="w-full max-w-full min-w-0 rounded-lg border border-zinc-300 bg-white py-1.5 pl-3 pr-8 text-xs font-medium text-zinc-900 shadow-xs focus:border-zinc-900 focus:outline-none focus:ring-1 focus:ring-zinc-900 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23374151%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:14px_14px] bg-[right_0.75rem_center] bg-no-repeat">
                 {{-- Options dynamically injected via JS --}}
             </select>
         </div>
@@ -128,16 +128,16 @@
             <div class="min-w-0">
                 <label class="block text-xs font-medium text-zinc-700 mb-1.5">Base Price ($)</label>
                 <input type="number" step="0.01" name="base_price" id="base-price" value="12.00" required
-                       class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 px-3 py-2 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900">
+                       class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900">
             </div>
             <div class="min-w-0">
                 <label class="block text-xs font-medium text-zinc-700 mb-1.5">Delivery Fee ($)</label>
                 <input type="number" step="0.01" name="delivery_fee" id="delivery-fee" value="2.00"
-                       class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 px-3 py-2 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900">
+                       class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900">
             </div>
             <div class="min-w-0">
                 <label class="block text-xs font-medium text-zinc-700 mb-1.5">Payment Status</label>
-                <select name="payment_status" id="payment-status" class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 py-2 pl-3 pr-8 text-xs focus:outline-none focus:border-zinc-900 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23374151%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:14px_14px] bg-[right_0.75rem_center] bg-no-repeat">
+                <select name="payment_status" id="payment-status" class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 bg-white py-1.5 pl-3 pr-8 text-xs focus:outline-none focus:border-zinc-900 cursor-pointer appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23374151%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:14px_14px] bg-[right_0.75rem_center] bg-no-repeat">
                     <option value="Not Yet">Not Yet</option>
                     <option value="Partial">Partial</option>
                     <option value="Paid">Paid</option>
@@ -146,7 +146,7 @@
             <div class="min-w-0">
                 <label class="block text-xs font-medium text-zinc-700 mb-1.5">Payment Method</label>
                 <input type="text" name="payment_method" placeholder="ABA, Cash..."
-                       class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 px-3 py-2 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900">
+                       class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900">
             </div>
         </div>
 
@@ -154,7 +154,7 @@
         <div id="partial-amount-wrap" class="hidden mb-4 sm:w-1/4 min-w-0">
             <label class="block text-xs font-medium text-zinc-700 mb-1.5">Amount Paid So Far ($)</label>
             <input type="number" step="0.01" name="partial_amount" id="partial-amount" value="0.00"
-                   class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 px-3 py-2 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900">
+                   class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900">
         </div>
 
         <div class="flex items-center justify-between rounded-lg bg-zinc-50 border border-zinc-200 px-4 py-3">
@@ -165,7 +165,7 @@
         <div class="mt-4 min-w-0">
             <label class="block text-xs font-medium text-zinc-700 mb-1.5">Notes</label>
             <textarea name="notes" rows="3" placeholder="Any special notes..."
-                      class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 px-3 py-2 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900"></textarea>
+                      class="w-full max-w-full min-w-0 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900"></textarea>
         </div>
     </div>
 
