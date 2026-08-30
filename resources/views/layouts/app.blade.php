@@ -39,17 +39,26 @@
     ::-webkit-scrollbar { width: 5px; height: 5px; }
     ::-webkit-scrollbar-thumb { background: #e4e4e7; border-radius: 3px; }
 
-    /* 2. Keep font at 12px as designed (NOT forced to 16px) -- zoom prevention
-       is instead handled by the focus/blur JS below, which re-locks the
-       viewport scale the instant a field is tapped. A clear focus highlight
-       replaces the "zoom in to show you're editing" cue iOS normally gives. */
+    /* 2. Desktop baseline styling (12px) */
     input, select, textarea {
         font-size: 12px;
     }
-    input:focus, select:focus, textarea:focus {
-        outline: none;
-        border-color: #18181b !important;
-        box-shadow: 0 0 0 3px rgba(24, 24, 27, 0.12);
+
+    /* 3. iOS Focus Zoom Bypass: Keep computed font-size at 16px to prevent iOS zoom,
+          then scale down by 0.75 to render visually at 12px. */
+    @media screen and (max-width: 768px) {
+        input:not([type="checkbox"]):not([type="radio"]), 
+        select, 
+        textarea,
+        ::-webkit-date-and-time-value {
+            font-size: 16px !important;
+            transform: scale(0.75);
+            transform-origin: left top;
+            width: 133.333% !important; /* Compensates for 0.75 width reduction */
+            margin-right: -33.333% !important; /* Prevents container layout overflow */
+            margin-bottom: -0.5rem !important; /* Offsets scale vertical whitespace */
+            touch-action: manipulation;
+        }
     }
 
     /* Status & Payment Badges */
@@ -216,27 +225,5 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @stack('scripts')
-
-    <script>
-        // iOS Safari auto-zooms on focus when an input's font is under 16px --
-        // that's an accessibility rule Apple enforces regardless of the
-        // viewport meta tag. Since the font here is intentionally kept at
-        // 12px (not the usual 16px workaround), this re-asserts the locked
-        // viewport scale the instant any field is focused, which stops the
-        // zoom without needing to change the font size.
-        const viewportMeta = document.querySelector('meta[name="viewport"]');
-        const LOCKED = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover';
-
-        document.addEventListener('focusin', (e) => {
-            if (['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName)) {
-                viewportMeta.setAttribute('content', LOCKED);
-            }
-        });
-        document.addEventListener('focusout', (e) => {
-            if (['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName)) {
-                viewportMeta.setAttribute('content', LOCKED);
-            }
-        });
-    </script>
 </body>
 </html>
