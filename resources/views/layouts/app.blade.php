@@ -39,25 +39,19 @@
     ::-webkit-scrollbar { width: 5px; height: 5px; }
     ::-webkit-scrollbar-thumb { background: #e4e4e7; border-radius: 3px; }
 
-    /* 2. Desktop baseline styling (12px) */
+    /* 2. Baseline styling (12px everywhere) */
     input, select, textarea {
         font-size: 12px;
     }
 
-    /* 3. iOS Focus Zoom Bypass: Keep computed font-size at 16px to prevent iOS zoom,
-          then scale down by 0.75 to render visually at 12px. */
+    /* 3. Non-destructive iOS Zoom Fix: 
+        Temporarily switch font-size to 16px ONLY on focus on mobile screens. 
+        Zero width, margin, or transform changes—your columns stay untouched. */
     @media screen and (max-width: 768px) {
-        input:not([type="checkbox"]):not([type="radio"]), 
-        select, 
-        textarea,
-        ::-webkit-date-and-time-value {
+        input:not([type="checkbox"]):not([type="radio"]):focus, 
+        select:focus, 
+        textarea:focus {
             font-size: 16px !important;
-            transform: scale(0.75);
-            transform-origin: left top;
-            width: 133.333% !important; /* Compensates for 0.75 width reduction */
-            margin-right: -33.333% !important; /* Prevents container layout overflow */
-            margin-bottom: -0.5rem !important; /* Offsets scale vertical whitespace */
-            touch-action: manipulation;
         }
     }
 
@@ -68,7 +62,7 @@
     .badge-missing-film { background-color: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
     .badge-missing-both { background-color: #fef2f2; color: #b91c1c; border-color: #fecaca; }
     .badge-unknown { background-color: #f4f4f5; color: #52525b; border-color: #e4e4e7; }
-    
+
     .status-printed { background-color: #e0e7ff; color: #3730a3; border-color: #c7d2fe; }
     .status-pending { background-color: #f4f4f5; color: #52525b; border-color: #e4e4e7; }
     .status-packaging { background-color: #fffbeb; color: #b45309; border-color: #fde68a; }
