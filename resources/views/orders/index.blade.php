@@ -21,21 +21,21 @@
     </div>
 
     {{-- ── Global "All Orders" table ───────────────────────────── --}}
-    <div id="all-orders" class="bg-white border border-zinc-200/80 rounded-xl p-4 sm:p-5 shadow-2xs scroll-mt-20">
-        <h2 class="text-xs font-bold text-zinc-900 uppercase tracking-wider mb-3">All Orders</h2>
+    <div id="all-orders" class="bg-white border border-zinc-200/80 rounded-xl p-5 shadow-2xs scroll-mt-20">
+        <h2 class="text-xs font-bold text-zinc-900 uppercase tracking-wider mb-4">All Orders</h2>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 mb-4" data-filter-form data-scope="all">
+        <div class="grid sm:grid-cols-3 md:grid-cols-6 gap-2 mb-4" data-filter-form data-scope="all">
             <input type="text" placeholder="Search customer, order #, notes..." data-filter="search"
-                   class="col-span-2 sm:col-span-2 rounded-lg border border-zinc-200/80 bg-zinc-50/50 h-8 px-3 text-xs text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-zinc-900 focus:bg-white focus:ring-1 focus:ring-zinc-900 transition-colors">
+                   class="sm:col-span-2 rounded-lg border border-zinc-200 px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900">
             
-            <select data-filter="collection" class="rounded-lg border border-zinc-200/80 bg-zinc-100/70 h-8 pl-2.5 pr-6 text-xs text-zinc-800 focus:outline-none focus:border-zinc-900 focus:bg-white appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2371717a%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px_12px] bg-[right_0.5rem_center] bg-no-repeat cursor-pointer">
+            <select data-filter="collection" class="rounded-lg border border-zinc-200 px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900">
                 <option value="">All Collections</option>
                 @foreach ($collections as $collection)
                     <option value="{{ $collection->id }}">{{ $collection->name }}</option>
                 @endforeach
             </select>
 
-            <select data-filter="readiness" class="rounded-lg border border-zinc-200/80 bg-zinc-100/70 h-8 pl-2.5 pr-6 text-xs text-zinc-800 focus:outline-none focus:border-zinc-900 focus:bg-white appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2371717a%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px_12px] bg-[right_0.5rem_center] bg-no-repeat cursor-pointer">
+            <select data-filter="readiness" class="rounded-lg border border-zinc-200 px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900">
                 <option value="">Any Readiness</option>
                 <option value="ready">Ready to Print</option>
                 <option value="missing_shirt">Missing Shirt</option>
@@ -44,21 +44,21 @@
                 <option value="printed">Printed</option>
             </select>
 
-            <select data-filter="print_status" class="rounded-lg border border-zinc-200/80 bg-zinc-100/70 h-8 pl-2.5 pr-6 text-xs text-zinc-800 focus:outline-none focus:border-zinc-900 focus:bg-white appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2371717a%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px_12px] bg-[right_0.5rem_center] bg-no-repeat cursor-pointer">
+            <select data-filter="print_status" class="rounded-lg border border-zinc-200 px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900">
                 <option value="">Any Print Status</option>
                 @foreach (['Pending', 'Printing', 'Printed', 'Done'] as $s)
                     <option value="{{ $s }}">{{ $s }}</option>
                 @endforeach
             </select>
 
-            <select data-filter="delivery_status" class="rounded-lg border border-zinc-200/80 bg-zinc-100/70 h-8 pl-2.5 pr-6 text-xs text-zinc-800 focus:outline-none focus:border-zinc-900 focus:bg-white appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2371717a%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px_12px] bg-[right_0.5rem_center] bg-no-repeat cursor-pointer">
+            <select data-filter="delivery_status" class="rounded-lg border border-zinc-200 px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900">
                 <option value="">Any Delivery Status</option>
                 @foreach (['Pending', 'Packaging', 'Delivering', 'Delivered', 'Cancelled'] as $s)
                     <option value="{{ $s }}">{{ $s }}</option>
                 @endforeach
             </select>
 
-            <select data-filter="payment_status" class="rounded-lg border border-zinc-200/80 bg-zinc-100/70 h-8 pl-2.5 pr-6 text-xs text-zinc-800 focus:outline-none focus:border-zinc-900 focus:bg-white appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2371717a%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px_12px] bg-[right_0.5rem_center] bg-no-repeat cursor-pointer">
+            <select data-filter="payment_status" class="rounded-lg border border-zinc-200 px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900">
                 <option value="">Any Payment Status</option>
                 @foreach (['Not Yet', 'Partial', 'Paid'] as $s)
                     <option value="{{ $s }}">{{ $s }}</option>
@@ -97,14 +97,14 @@
 
     {{-- ── Per-collection sections ─────────────────────────────── --}}
     @foreach ($collections as $collection)
-        <div id="collection-{{ $collection->id }}" class="bg-white border border-zinc-200/80 rounded-xl p-4 sm:p-5 shadow-2xs scroll-mt-20">
-            <h2 class="text-xs font-bold text-zinc-900 uppercase tracking-wider mb-3">{{ $collection->name }}</h2>
+        <div id="collection-{{ $collection->id }}" class="bg-white border border-zinc-200/80 rounded-xl p-5 shadow-2xs scroll-mt-20">
+            <h2 class="text-xs font-bold text-zinc-900 uppercase tracking-wider mb-4">{{ $collection->name }}</h2>
 
-            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-5 gap-2 mb-4" data-filter-form data-scope="collection" data-collection-id="{{ $collection->id }}">
+            <div class="grid sm:grid-cols-2 md:grid-cols-5 gap-2 mb-4" data-filter-form data-scope="collection" data-collection-id="{{ $collection->id }}">
                 <input type="text" placeholder="Search customer, order #, notes..." data-filter="search"
-                       class="col-span-2 sm:col-span-2 rounded-lg border border-zinc-200/80 bg-zinc-50/50 h-8 px-3 text-xs text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-zinc-900 focus:bg-white focus:ring-1 focus:ring-zinc-900 transition-colors">
+                       class="sm:col-span-2 rounded-lg border border-zinc-200 px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900">
                 
-                <select data-filter="readiness" class="rounded-lg border border-zinc-200/80 bg-zinc-100/70 h-8 pl-2.5 pr-6 text-xs text-zinc-800 focus:outline-none focus:border-zinc-900 focus:bg-white appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2371717a%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px_12px] bg-[right_0.5rem_center] bg-no-repeat cursor-pointer">
+                <select data-filter="readiness" class="rounded-lg border border-zinc-200 px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900">
                     <option value="">Any Readiness</option>
                     <option value="ready">Ready to Print</option>
                     <option value="missing_shirt">Missing Shirt</option>
@@ -113,14 +113,14 @@
                     <option value="printed">Printed</option>
                 </select>
 
-                <select data-filter="delivery_status" class="rounded-lg border border-zinc-200/80 bg-zinc-100/70 h-8 pl-2.5 pr-6 text-xs text-zinc-800 focus:outline-none focus:border-zinc-900 focus:bg-white appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2371717a%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px_12px] bg-[right_0.5rem_center] bg-no-repeat cursor-pointer">
+                <select data-filter="delivery_status" class="rounded-lg border border-zinc-200 px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900">
                     <option value="">Any Delivery Status</option>
                     @foreach (['Pending', 'Packaging', 'Delivering', 'Delivered', 'Cancelled'] as $s)
                         <option value="{{ $s }}">{{ $s }}</option>
                     @endforeach
                 </select>
 
-                <select data-filter="payment_status" class="rounded-lg border border-zinc-200/80 bg-zinc-100/70 h-8 pl-2.5 pr-6 text-xs text-zinc-800 focus:outline-none focus:border-zinc-900 focus:bg-white appearance-none bg-[url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2371717a%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px_12px] bg-[right_0.5rem_center] bg-no-repeat cursor-pointer">
+                <select data-filter="payment_status" class="rounded-lg border border-zinc-200 px-3 py-1.5 text-xs focus:outline-none focus:border-zinc-900">
                     <option value="">Any Payment Status</option>
                     @foreach (['Not Yet', 'Partial', 'Paid'] as $s)
                         <option value="{{ $s }}">{{ $s }}</option>
