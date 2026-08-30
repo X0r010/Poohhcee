@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>@yield('title', 'Dashboard') — Poohhcee</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -33,8 +33,15 @@
         ::-webkit-scrollbar { width: 5px; height: 5px; }
         ::-webkit-scrollbar-thumb { background: #e4e4e7; border-radius: 3px; }
 
+        /* Prevent iOS Safari auto-zoom on input focus */
+        @media screen and (max-width: 768px) {
+            input, select, textarea {
+                font-size: 16px !important;
+            }
+        }
+
         /* Status & Payment Badges */
-        .badge { display: inline-flex; items-center: center; gap: 0.25rem; border-radius: 0.375rem; padding: 0.125rem 0.5rem; font-size: 11px; font-weight: 500; border-width: 1px; }
+        .badge { display: inline-flex; align-items: center; gap: 0.25rem; border-radius: 0.375rem; padding: 0.125rem 0.5rem; font-size: 11px; font-weight: 500; border-width: 1px; }
         .badge-ready { background-color: #ecfdf5; color: #047857; border-color: #a7f3d0; }
         .badge-missing-shirt { background-color: #fffbeb; color: #b45309; border-color: #fde68a; }
         .badge-missing-film { background-color: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
