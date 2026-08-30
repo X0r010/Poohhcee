@@ -39,9 +39,21 @@
     ::-webkit-scrollbar { width: 5px; height: 5px; }
     ::-webkit-scrollbar-thumb { background: #e4e4e7; border-radius: 3px; }
 
-    /* 2. Standard 12px input styling across all devices */
+    /* 2. Desktop baseline styling (12px) */
     input, select, textarea {
         font-size: 12px;
+    }
+
+    /* 3. iOS Zoom Fix (Mobile only)
+        Forces 16px font-size on touch screens to completely kill iOS focus zoom.
+        Does NOT touch width, margin, or transforms—so your columns stay 100% identical. */
+    @media screen and (max-width: 768px) {
+        input:not([type="checkbox"]):not([type="radio"]), 
+        select, 
+        textarea,
+        ::-webkit-date-and-time-value {
+            font-size: 16px !important;
+        }
     }
 
     /* Status & Payment Badges */
@@ -207,23 +219,6 @@
     </div>
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <!-- iOS Anti-Zoom Fix (Preserves 100% layout & column sizing) -->
-    <script>
-        document.addEventListener('touchstart', function(e) {
-            const el = e.target.closest('input, select, textarea');
-            if (el && !['checkbox', 'radio'].includes(el.type)) {
-                el.style.fontSize = '16px';
-            }
-        }, { passive: true });
-
-        document.addEventListener('focusout', function(e) {
-            const el = e.target.closest('input, select, textarea');
-            if (el) {
-                el.style.fontSize = '';
-            }
-        });
-    </script>
     @stack('scripts')
 </body>
 </html>
