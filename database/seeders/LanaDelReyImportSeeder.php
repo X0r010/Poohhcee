@@ -67,7 +67,7 @@ class LanaDelReyImportSeeder extends Seeder
                 if (!isset($artworkCache[$item])) {
                     $artwork = PrintArtwork::firstOrCreate(
                         ['collection_id' => $collection->id, 'name' => $item],
-                        ['has_front' => true, 'has_back' => false]
+                        ['has_front' => true, 'has_back' => true]
                     );
                     $artworkCache[$item] = $artwork;
                 }

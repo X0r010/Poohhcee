@@ -55,11 +55,18 @@ class BillieEilishImportSeeder extends Seeder
             );
             $collection->update(['short_code' => 'BILL']);
 
-            // 2. Clear old Billie Eilish orders & reset sequence counter
+            // 2. Clear ONLY Billie Eilish data (orders, films, designs, artworks)
             $designIds = Design::where('collection_id', $collection->id)->pluck('id');
+            $artworkIds = PrintArtwork::where('collection_id', $collection->id)->pluck('id');
+
             if ($designIds->isNotEmpty()) {
                 Order::whereIn('design_id', $designIds)->delete();
             }
+            if ($artworkIds->isNotEmpty()) {
+                FilmInventory::whereIn('print_artwork_id', $artworkIds)->delete();
+            }
+            Design::where('collection_id', $collection->id)->delete();
+            PrintArtwork::where('collection_id', $collection->id)->delete();
 
             OrderSequence::updateOrCreate(
                 ['collection_id' => $collection->id],
@@ -84,11 +91,11 @@ class BillieEilishImportSeeder extends Seeder
                     $this->customRows[] = ['row' => $i + 1, 'item' => $item];
                 }
 
-                // Print Artwork
+                // Print Artwork (Force has_back = true for all Billie Eilish artworks)
                 if (!isset($artworkCache[$resolved['artwork']])) {
                     $artwork = PrintArtwork::firstOrCreate(
                         ['collection_id' => $collection->id, 'name' => $resolved['artwork']],
-                        ['has_front' => true, 'has_back' => str_contains(strtolower($item), 'back')]
+                        ['has_front' => true, 'has_back' => true]
                     );
                     $artworkCache[$resolved['artwork']] = $artwork;
                 }
@@ -107,9 +114,8 @@ class BillieEilishImportSeeder extends Seeder
                 }
                 $design = $designCache[$resolved['design']];
 
-                // Film Inventory
-                $sides = $artwork->has_back ? ['front', 'back'] : ['front'];
-                foreach ($sides as $side) {
+                // Film Inventory (Both Front and Back)
+                foreach (['front', 'back'] as $side) {
                     FilmInventory::firstOrCreate(
                         ['print_artwork_id' => $artwork->id, 'side' => $side, 'shirt_color' => null],
                         ['design_id' => $design->id, 'prints_available' => 0, 'reserved_quantity' => 0, 'used_quantity' => 0, 'cost_per_print' => self::FILM_COST_PER_SIDE]
@@ -150,14 +156,7 @@ class BillieEilishImportSeeder extends Seeder
             ];
         }
 
-        if (str_contains($itemLower, 'iltd')) {
-            return [
-                'design'  => 'Pink ILTD',
-                'artwork' => 'Pink ILTD',
-            ];
-        }
-
-        if (str_contains($itemLower, 'pink')) {
+        if (str_contains($itemLower, 'iltd') || str_contains($itemLower, 'pink')) {
             return [
                 'design'  => $color === 'Black' ? 'Pink Design (Black Shirt)' : 'Pink Design',
                 'artwork' => 'Pink Design',
@@ -191,7 +190,6 @@ class BillieEilishImportSeeder extends Seeder
         $deliveryFee = $this->parseMoney($row['Delivery Fee'] ?? '');
         $total = $this->parseMoney($row['Total ($)'] ?? '');
 
-        // Default prices if empty in CSV (e.g. pending/unpaid row #18)
         if ($basePrice == 0) $basePrice = 12.00;
         if ($total == 0) $total = $basePrice + $deliveryFee;
 
