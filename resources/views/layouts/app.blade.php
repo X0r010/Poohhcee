@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>@yield('title', 'Dashboard') — Poohhcee</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -28,36 +28,48 @@
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
 
     <style>
-        body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
-        [x-cloak] { display: none !important; }
-        ::-webkit-scrollbar { width: 5px; height: 5px; }
-        ::-webkit-scrollbar-thumb { background: #e4e4e7; border-radius: 3px; }
+    /* 1. Disable iOS Safari automatic text size inflation */
+    html, body {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
 
-        /* Prevent iOS Safari auto-zoom on tap while preserving original small design size */
-        @media screen and (max-width: 768px) {
-            input:focus, select:focus, textarea:focus {
-                font-size: 16px !important;
-            }
-        }
+    body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-thumb { background: #e4e4e7; border-radius: 3px; }
 
-        /* Status & Payment Badges */
-        .badge { display: inline-flex; align-items: center; gap: 0.25rem; border-radius: 0.375rem; padding: 0.125rem 0.5rem; font-size: 11px; font-weight: 500; border-width: 1px; }
-        .badge-ready { background-color: #ecfdf5; color: #047857; border-color: #a7f3d0; }
-        .badge-missing-shirt { background-color: #fffbeb; color: #b45309; border-color: #fde68a; }
-        .badge-missing-film { background-color: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
-        .badge-missing-both { background-color: #fef2f2; color: #b91c1c; border-color: #fecaca; }
-        .badge-unknown { background-color: #f4f4f5; color: #52525b; border-color: #e4e4e7; }
-        
-        .status-printed { background-color: #e0e7ff; color: #3730a3; border-color: #c7d2fe; }
-        .status-pending { background-color: #f4f4f5; color: #52525b; border-color: #e4e4e7; }
-        .status-packaging { background-color: #fffbeb; color: #b45309; border-color: #fde68a; }
-        .status-delivering { background-color: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
-        .status-delivered { background-color: #ecfdf5; color: #047857; border-color: #a7f3d0; }
-        .status-cancelled { background-color: #fef2f2; color: #b91c1c; border-color: #fecaca; text-decoration: line-through; }
+    /* 2. Keep font at 12px as designed (NOT forced to 16px) -- zoom prevention
+       is instead handled by the focus/blur JS below, which re-locks the
+       viewport scale the instant a field is tapped. A clear focus highlight
+       replaces the "zoom in to show you're editing" cue iOS normally gives. */
+    input, select, textarea {
+        font-size: 12px;
+    }
+    input:focus, select:focus, textarea:focus {
+        outline: none;
+        border-color: #18181b !important;
+        box-shadow: 0 0 0 3px rgba(24, 24, 27, 0.12);
+    }
 
-        .payment-paid { background-color: #ecfdf5; color: #047857; border-color: #a7f3d0; }
-        .payment-partial { background-color: #fffbeb; color: #b45309; border-color: #fde68a; }
-        .payment-unpaid { background-color: #fef2f2; color: #b91c1c; border-color: #fecaca; }
+    /* Status & Payment Badges */
+    .badge { display: inline-flex; align-items: center; gap: 0.25rem; border-radius: 0.375rem; padding: 0.125rem 0.5rem; font-size: 11px; font-weight: 500; border-width: 1px; }
+    .badge-ready { background-color: #ecfdf5; color: #047857; border-color: #a7f3d0; }
+    .badge-missing-shirt { background-color: #fffbeb; color: #b45309; border-color: #fde68a; }
+    .badge-missing-film { background-color: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+    .badge-missing-both { background-color: #fef2f2; color: #b91c1c; border-color: #fecaca; }
+    .badge-unknown { background-color: #f4f4f5; color: #52525b; border-color: #e4e4e7; }
+    
+    .status-printed { background-color: #e0e7ff; color: #3730a3; border-color: #c7d2fe; }
+    .status-pending { background-color: #f4f4f5; color: #52525b; border-color: #e4e4e7; }
+    .status-packaging { background-color: #fffbeb; color: #b45309; border-color: #fde68a; }
+    .status-delivering { background-color: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+    .status-delivered { background-color: #ecfdf5; color: #047857; border-color: #a7f3d0; }
+    .status-cancelled { background-color: #fef2f2; color: #b91c1c; border-color: #fecaca; text-decoration: line-through; }
+
+    .payment-paid { background-color: #ecfdf5; color: #047857; border-color: #a7f3d0; }
+    .payment-partial { background-color: #fffbeb; color: #b45309; border-color: #fde68a; }
+    .payment-unpaid { background-color: #fef2f2; color: #b91c1c; border-color: #fecaca; }
     </style>
 
     @stack('styles')
@@ -204,5 +216,27 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @stack('scripts')
+
+    <script>
+        // iOS Safari auto-zooms on focus when an input's font is under 16px --
+        // that's an accessibility rule Apple enforces regardless of the
+        // viewport meta tag. Since the font here is intentionally kept at
+        // 12px (not the usual 16px workaround), this re-asserts the locked
+        // viewport scale the instant any field is focused, which stops the
+        // zoom without needing to change the font size.
+        const viewportMeta = document.querySelector('meta[name="viewport"]');
+        const LOCKED = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover';
+
+        document.addEventListener('focusin', (e) => {
+            if (['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName)) {
+                viewportMeta.setAttribute('content', LOCKED);
+            }
+        });
+        document.addEventListener('focusout', (e) => {
+            if (['INPUT', 'SELECT', 'TEXTAREA'].includes(e.target.tagName)) {
+                viewportMeta.setAttribute('content', LOCKED);
+            }
+        });
+    </script>
 </body>
 </html>
