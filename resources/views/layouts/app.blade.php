@@ -33,9 +33,9 @@
         ::-webkit-scrollbar { width: 5px; height: 5px; }
         ::-webkit-scrollbar-thumb { background: #e4e4e7; border-radius: 3px; }
 
-        /* Prevent iOS Safari auto-zoom on tap while preserving original small design size */
+        /* Prevent iOS Safari auto-zoom on tap by forcing 16px minimum on mobile */
         @media screen and (max-width: 768px) {
-            input:focus, select:focus, textarea:focus {
+            input, select, textarea {
                 font-size: 16px !important;
             }
         }
